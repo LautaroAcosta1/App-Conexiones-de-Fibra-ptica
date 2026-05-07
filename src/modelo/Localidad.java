@@ -33,4 +33,13 @@ public class Localidad {
     public double getLongitud() {
         return longitud;
     }
+
+    @Override
+    public String toString() {
+
+        return nombre
+                + " ("
+                + provincia
+                + ")";
+    }
 }

@@ -26,4 +26,14 @@ public class Conexion {
     public double getCosto() {
         return costo;
     }
+
+    @Override
+    public String toString() {
+
+        return origen.getNombre()
+                + " -> "
+                + destino.getNombre()
+                + " | costo: "
+                + costo;
+    }
 }
