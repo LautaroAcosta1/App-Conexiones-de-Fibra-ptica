@@ -114,13 +114,7 @@ public class Main {
 
         for (Conexion c : mst) {
 
-            System.out.println(
-                    c.getOrigen().getNombre()
-                            + " -> "
-                            + c.getDestino().getNombre()
-                            + " | costo: "
-                            + c.getCosto()
-            );
+            System.out.println(c);
 
             total += c.getCosto();
         }
