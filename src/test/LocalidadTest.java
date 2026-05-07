@@ -22,4 +22,26 @@ public class LocalidadTest {
         assertEquals(10, l.getLatitud(), 0.001);
         assertEquals(20, l.getLongitud(), 0.001);
     }
+
+    @Test
+    public void testEquals() {
+
+        Localidad a1 =
+                new Localidad(
+                        "Buenos Aires",
+                        "BA",
+                        0,
+                        0
+                );
+
+        Localidad a2 =
+                new Localidad(
+                        "Buenos Aires",
+                        "BA",
+                        100,
+                        200
+                );
+
+        assertEquals(a1, a2);
+    }
 }

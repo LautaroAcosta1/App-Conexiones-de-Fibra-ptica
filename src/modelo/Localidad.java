@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.Objects;
+
 public class Localidad {
 
     private String nombre;
@@ -41,5 +43,34 @@ public class Localidad {
                 + " ("
                 + provincia
                 + ")";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+
+        if (this == o) {
+            return true;
+        }
+
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Localidad that = (Localidad) o;
+
+        return Objects.equals(nombre, that.nombre)
+                && Objects.equals(
+                provincia,
+                that.provincia
+        );
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(
+                nombre,
+                provincia
+        );
     }
 }
