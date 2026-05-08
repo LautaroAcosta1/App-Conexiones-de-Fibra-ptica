@@ -20,8 +20,7 @@ public class ConexionTest {
 
         Localidad b = new Localidad(
                 "Cordoba",
-                "Cordoba",
-                30,
+                "Cordoba", 30,
                 40
         );
 

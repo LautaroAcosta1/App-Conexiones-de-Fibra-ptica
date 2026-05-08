@@ -22,9 +22,7 @@ public class RepositorioLocalidades {
         gson = new Gson();
     }
 
-    public void guardar(
-            List<Localidad> localidades)
-            throws IOException {
+    public void guardar(List<Localidad> localidades) throws IOException { 
 
         FileWriter writer =
                 new FileWriter(ARCHIVO);
@@ -51,4 +49,5 @@ public class RepositorioLocalidades {
 
         return localidades;
     }
+ 
 }

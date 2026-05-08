@@ -44,10 +44,12 @@ public class Main {
         Localidad mendoza =
                 new Localidad(
                         "Mendoza",
-                        "Mendoza",
+                		"Mendoza",
                         300,
                         400
                 );
+        
+        Localidad uruguay = new Localidad("Uruguay","Urugay",1000,2000);
 
         // lista de localidades
 
@@ -58,6 +60,7 @@ public class Main {
         localidades.add(cordoba);
         localidades.add(rosario);
         localidades.add(mendoza);
+        localidades.add(uruguay);
 
         // guardar en Json
 
