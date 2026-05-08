@@ -5,13 +5,15 @@ import modelo.Localidad;
 import servicio.CalculadorCosto;
 import servicio.GeneradorConexiones;
 import servicio.Kruskal;
+import servicio.RepositorioLocalidades;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+            throws Exception {
 
         // crear localidades
 
@@ -57,13 +59,38 @@ public class Main {
         localidades.add(rosario);
         localidades.add(mendoza);
 
+        // guardar en Json
+
+        RepositorioLocalidades repo =
+                new RepositorioLocalidades();
+
+        repo.guardar(localidades);
+
+        System.out.println(
+                "Localidades guardadas."
+        );
+
+        // cargar desde el Json
+
+        List<Localidad> cargadas =
+                repo.cargar();
+
+        System.out.println();
+        System.out.println(
+                "LOCALIDADES CARGADAS:"
+        );
+
+        for (Localidad l : cargadas) {
+            System.out.println(l);
+        }
+
         // crear calculador
 
         CalculadorCosto calculador =
                 new CalculadorCosto(
-                        10,     // costo por km
-                        0.2,    // 20% extra
-                        500     // interprovincial
+                        10,
+                        0.2,
+                        500
                 );
 
         // generar conexiones
@@ -73,23 +100,17 @@ public class Main {
 
         List<Conexion> conexiones =
                 generador.generar(
-                        localidades,
+                        cargadas,
                         calculador
                 );
 
+        System.out.println();
         System.out.println(
                 "CONEXIONES GENERADAS:"
         );
 
         for (Conexion c : conexiones) {
-
-            System.out.println(
-                    c.getOrigen().getNombre()
-                            + " -> "
-                            + c.getDestino().getNombre()
-                            + " | costo: "
-                            + c.getCosto()
-            );
+            System.out.println(c);
         }
 
         // ejecutar Kruskal
@@ -99,7 +120,7 @@ public class Main {
 
         List<Conexion> mst =
                 kruskal.mst(
-                        localidades,
+                        cargadas,
                         conexiones
                 );
 
