@@ -38,19 +38,6 @@ public class Planificador {
         return new ResultadoPlanificacion(mst, costoTotal);
     }
 
-    // Permite al usuario cambiar una conexion del MST por otra y recalcula el costo total
-    public ResultadoPlanificacion reemplazarConexion(ResultadoPlanificacion actual,
-                                                      Conexion aEliminar,
-                                                      Conexion aAgregar) {
-        List<Conexion> nuevas = new ArrayList<>(actual.getConexiones());
-        nuevas.remove(aEliminar);
-        nuevas.add(aAgregar);
-
-        double costoTotal = nuevas.stream().mapToDouble(Conexion::getCosto).sum();
-
-        return new ResultadoPlanificacion(nuevas, costoTotal);
-    }
-
     // agrega una localidad a la lista en memoria
     public void agregarLocalidad(Localidad localidad) {
         localidades.add(localidad);
@@ -67,7 +54,7 @@ public class Planificador {
         return localidades;
     }
 
-    // Persiste la lista actual en el archivo JSON
+    // guarda la lista actual en el archivo JSON
     public void guardarLocalidades() throws IOException {
         repositorio.guardar(localidades);
     }
@@ -76,7 +63,11 @@ public class Planificador {
     public void cargarLocalidades() throws IOException {
         List<Localidad> cargadas = repositorio.cargar();
         if (cargadas != null) {
-            localidades = cargadas;
+            for (Localidad l : cargadas) {             
+                if (!localidades.contains(l)) {
+                	localidades.add(l);
+                }
+            }
         }
     }
 }

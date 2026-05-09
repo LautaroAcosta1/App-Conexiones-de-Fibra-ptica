@@ -22,13 +22,26 @@ public class RepositorioLocalidades {
         gson = new Gson();
     }
 
-    public void guardar(List<Localidad> localidades) throws IOException { 
-
-        FileWriter writer =
-                new FileWriter(ARCHIVO);
-
-        gson.toJson(localidades, writer);
-
+    public void guardar(List<Localidad> localidades) throws IOException {
+        // carga lo que habia antes
+        List<Localidad> existentes = new ArrayList<>();
+        try {
+            existentes = cargar();
+            if (existentes == null) {
+                existentes = new ArrayList<>();
+            }
+        } catch (IOException e) {
+            // si no existia el archivo arranca vacio
+        }
+        // agrega las nuevas sin duplicar
+        for (Localidad nueva : localidades) {
+            if (!existentes.contains(nueva)) {
+                existentes.add(nueva);
+            }
+        }
+        // guarda todo junto
+        FileWriter writer = new FileWriter(ARCHIVO);
+        gson.toJson(existentes, writer);
         writer.close();
     }
 
