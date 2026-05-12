@@ -1,1 +1,92 @@
-[{"nombre":"Uruguay","provincia":"Uruguay","latitud":-34.0,"longitud":-58.0},{"nombre":"Buenos Aires","provincia":"Buenos Aires","latitud":0.0,"longitud":0.0},{"nombre":"Cordoba","provincia":"Cordoba","latitud":100.0,"longitud":200.0},{"nombre":"Rosario","provincia":"Santa Fe","latitud":50.0,"longitud":80.0},{"nombre":"Mendoza","provincia":"Mendoza","latitud":300.0,"longitud":400.0},{"nombre":"Uruguay","provincia":"Urugay","latitud":1000.0,"longitud":2000.0},{"nombre":"asd","provincia":"Mendoza","latitud":100.0,"longitud":120.0},{"nombre":"Pilar","provincia":"Buenos Aires","latitud":-34.45867,"longitud":-58.91398},{"nombre":"San Isidro","provincia":"Buenos Aires","latitud":-34.46971,"longitud":-58.52111}]
+[
+  {
+    "nombre": "Pilar",
+    "provincia": "Buenos Aires",
+    "latitud": -34.45867,
+    "longitud": -58.91398
+  },
+  {
+    "nombre": "San Isidro",
+    "provincia": "Buenos Aires",
+    "latitud": -34.46971,
+    "longitud": -58.52111
+  },
+  {
+    "nombre": "La Plata",
+    "provincia": "Buenos Aires",
+    "latitud": -34.92145,
+    "longitud": -57.95453
+  },
+  {
+    "nombre": "Mar del Plata",
+    "provincia": "Buenos Aires",
+    "latitud": -38.00228,
+    "longitud": -57.55754
+  },
+  {
+    "nombre": "Bahía Blanca",
+    "provincia": "Buenos Aires",
+    "latitud": -38.71959,
+    "longitud": -62.27243
+  },
+  {
+    "nombre": "Córdoba",
+    "provincia": "Córdoba",
+    "latitud": -31.41350,
+    "longitud": -64.18105
+  },
+  {
+    "nombre": "Villa Carlos Paz",
+    "provincia": "Córdoba",
+    "latitud": -31.42414,
+    "longitud": -64.49778
+  },
+  {
+    "nombre": "Rosario",
+    "provincia": "Santa Fe",
+    "latitud": -32.94682,
+    "longitud": -60.63932
+  },
+  {
+    "nombre": "Santa Fe",
+    "provincia": "Santa Fe",
+    "latitud": -31.63333,
+    "longitud": -60.70000
+  },
+  {
+    "nombre": "Mendoza",
+    "provincia": "Mendoza",
+    "latitud": -32.89084,
+    "longitud": -68.82717
+  },
+  {
+    "nombre": "San Rafael",
+    "provincia": "Mendoza",
+    "latitud": -34.61772,
+    "longitud": -68.33007
+  },
+  {
+    "nombre": "Salta",
+    "provincia": "Salta",
+    "latitud": -24.78590,
+    "longitud": -65.41166
+  },
+  {
+    "nombre": "San Miguel de Tucumán",
+    "provincia": "Tucumán",
+    "latitud": -26.82414,
+    "longitud": -65.22260
+  },
+  {
+    "nombre": "Neuquén",
+    "provincia": "Neuquén",
+    "latitud": -38.95161,
+    "longitud": -68.05910
+  },
+  {
+    "nombre": "Bariloche",
+    "provincia": "Río Negro",
+    "latitud": -41.13347,
+    "longitud": -71.31028
+  }
+]
