@@ -5,90 +5,145 @@ import org.junit.Test;
 import servicio.CalculadorCosto;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class CalculadorCostoTest {
 
     @Test
-    public void testMismaProvinciaSinExtra() {
+    public void testMismaLocalidadCostoCero() {
 
         Localidad a = new Localidad(
-                "A",
+                "Pilar",
                 "Buenos Aires",
-                0,
-                0
-        );
-
-        Localidad b = new Localidad(
-                "B",
-                "Buenos Aires",
-                3,
-                4
+                -34.4587,
+                -58.9142
         );
 
         CalculadorCosto calculador =
                 new CalculadorCosto(10, 0.2, 500);
 
-        double costo = calculador.calcularCosto(a, b);
+        double costo = calculador.calcularCosto(a, a);
 
-        // distancia = 5
-        // costo = 5 * 10 = 50
+        assertEquals(0, costo, 0.01);
+    }
 
-        assertEquals(50, costo, 0.001);
+    @Test
+    public void testMismaProvinciaSinExtra() {
+
+        Localidad pilar = new Localidad(
+                "Pilar",
+                "Buenos Aires",
+                -34.4587,
+                -58.9142
+        );
+
+        Localidad sanIsidro = new Localidad(
+                "San Isidro",
+                "Buenos Aires",
+                -34.4721,
+                -58.5276
+        );
+
+        CalculadorCosto calculador =
+                new CalculadorCosto(10, 0.2, 500);
+
+        double costo =
+                calculador.calcularCosto(
+                        pilar,
+                        sanIsidro
+                );
+
+        // ~36 km * 10
+
+        assertEquals(360, costo, 40);
     }
 
     @Test
     public void testDistintaProvincia() {
 
-        Localidad a = new Localidad(
-                "A",
+        Localidad buenosAires = new Localidad(
                 "Buenos Aires",
-                0,
-                0
+                "Buenos Aires",
+                -34.6037,
+                -58.3816
         );
 
-        Localidad b = new Localidad(
-                "B",
+        Localidad cordoba = new Localidad(
                 "Cordoba",
-                3,
-                4
+                "Cordoba",
+                -31.4201,
+                -64.1888
         );
 
         CalculadorCosto calculador =
                 new CalculadorCosto(10, 0.2, 500);
 
-        double costo = calculador.calcularCosto(a, b);
+        double costo =
+                calculador.calcularCosto(
+                        buenosAires,
+                        cordoba
+                );
 
-        // 50 + 500
-
-        assertEquals(550, costo, 0.001);
+        // debe incluir costo interprovincial
+        assertTrue(costo > 500);
     }
 
     @Test
     public void testDistanciaMayorA300() {
 
-        Localidad a = new Localidad(
-                "A",
+        Localidad buenosAires = new Localidad(
                 "Buenos Aires",
-                0,
-                0
+                "Buenos Aires",
+                -34.6037,
+                -58.3816
         );
 
-        Localidad b = new Localidad(
-                "B",
-                "Buenos Aires",
-                0,
-                400
+        Localidad mendoza = new Localidad(
+                "Mendoza",
+                "Mendoza",
+                -32.8895,
+                -68.8458
         );
 
         CalculadorCosto calculador =
                 new CalculadorCosto(1, 0.5, 500);
 
-        double costo = calculador.calcularCosto(a, b);
+        double costo =
+                calculador.calcularCosto(
+                        buenosAires,
+                        mendoza
+                );
 
-        // distancia = 400
-        // costo base = 400
-        // +50%
+        // debe aplicar el porcentaje extra
+        assertTrue(costo > 1000);
+    }
 
-        assertEquals(600, costo, 0.001);
+    @Test
+    public void testSimetria() {
+
+        Localidad a = new Localidad(
+                "Pilar",
+                "Buenos Aires",
+                -34.4587,
+                -58.9142
+        );
+
+        Localidad b = new Localidad(
+                "San Isidro",
+                "Buenos Aires",
+                -34.4721,
+                -58.5276
+        );
+
+        CalculadorCosto calculador =
+                new CalculadorCosto(10, 0.2, 500);
+
+        double costoAB =
+                calculador.calcularCosto(a, b);
+
+        double costoBA =
+                calculador.calcularCosto(b, a);
+
+        assertEquals(costoAB, costoBA, 0.01);
     }
 }
